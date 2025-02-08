@@ -1,0 +1,26 @@
+{
+  "name": "ecom-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format:check": "prettier --check src/",
+    "format": "prettier --write src/"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "sass": "^1.84.0",
+    "vite": "^6.1.0"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "axios": "^1.7.9",
+    "bootstrap": "^5.3.3",
+    "diff-dom": "^5.1.4",
+    "jwt-decode": "^4.0.0",
+    "toastr": "^2.1.4"
+  }
+}

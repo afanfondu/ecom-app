@@ -1,8 +1,8 @@
 export default class View {
-  render(data = null) {
+  render(data = null, append = false) {
     this._data = data
-    this._clear()
-    this._container.insertAdjacentHTML('afterbegin', this._generateMarkup())
+    if (!append) this._clear()
+    this._container.insertAdjacentHTML('beforeend', this._generateMarkup())
   }
 
   _clear() {

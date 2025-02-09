@@ -15,7 +15,7 @@ export const products = createStore((set, get) => ({
     const endpoint = category ? `/products/category/${category}` : '/products'
 
     const { isError, error, data: products } = await api.get(endpoint)
-    if (isError) return error
+    if (isError) return { error }
 
     const start = (currentPage - 1) * limit
     const end = start + limit
@@ -23,6 +23,12 @@ export const products = createStore((set, get) => ({
     const totalPages = Math.ceil(products.length / limit)
 
     set({ products: paginatedProducts, totalPages })
+
+    return { isError }
+  },
+
+  getProductById(id) {
+    return get().products.find(product => product.id === parseInt(id))
   },
 
   setPage(currentPage) {

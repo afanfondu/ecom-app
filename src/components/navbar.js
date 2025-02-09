@@ -41,7 +41,7 @@ class NavBar extends View {
       .querySelector('#logout-button')
       .addEventListener('click', () => {
         handler()
-        this.render()
+        window.location.reload()
       })
   }
 }

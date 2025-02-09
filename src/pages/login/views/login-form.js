@@ -55,12 +55,7 @@ class LoginView extends View {
 
         const username = this._container.querySelector('#username').value
         const password = this._container.querySelector('#password').value
-        const error = await handler({ username, password })
-
-        if (error) {
-          toast.error('Something went wrong!')
-          this.formSubmitting(false)
-        }
+        await handler({ username, password })
       })
   }
 }

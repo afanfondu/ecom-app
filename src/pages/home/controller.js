@@ -7,6 +7,7 @@ import productsView from './views/products'
 import { products } from './model'
 import paginations from './views/paginations'
 import toast from '@components/toast'
+import { cart } from '@pages/cart/model'
 
 const init = async () => {
   const user = auth.get().user
@@ -30,13 +31,14 @@ const init = async () => {
 
     if (!user) return toast.error('Please login first.')
 
-    console.log(productId)
+    cart.addItem(products.getProductById(productId))
+    toast.success('Product added to cart!')
   })
 }
 
 const loadProducts = async () => {
   productsView.renderSpinner()
-  const error = await products.fetchProducts()
+  const { error } = await products.fetchProducts()
   if (error) {
     productsView.renderError()
     return

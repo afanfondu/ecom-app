@@ -20,9 +20,15 @@ class NavBar extends View {
               <li class="nav-item">
                 <a class="nav-link" href="/cart/">Cart</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Admin</a>
-              </li>
+              
+              ${
+                user && user.user === 'donero'
+                  ? `<li class="nav-item">
+                      <a class="nav-link" href='/admin/'>Admin</a>
+                    </li>`
+                  : ''
+              }
+
             </ul>
 
             <div class="d-flex align-items-center">

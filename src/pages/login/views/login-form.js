@@ -13,6 +13,9 @@ class LoginView extends View {
               <div class="card-header">
                 <h3 class="text-center">Login</h3>
               </div>
+              <div class="alert alert-primary" role="alert">
+                Use one of the username and password from this <a target="_blank" href="http://fakestoreapi.com/users">users</a> list. Admin user - username: donero, password: ewedon
+              </div>
               <div class="card-body">
                 <form id="login-form">
                   <div class="mb-3">
@@ -55,7 +58,16 @@ class LoginView extends View {
 
         const username = this._container.querySelector('#username').value
         const password = this._container.querySelector('#password').value
-        await handler({ username, password })
+
+        const { isError } = await handler({ username, password })
+
+        if (isError) {
+          toast.error('Invalid username or password!')
+          this.formSubmitting(false)
+          return
+        }
+
+        window.location.href = '/'
       })
   }
 }

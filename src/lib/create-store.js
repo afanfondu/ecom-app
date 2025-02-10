@@ -4,8 +4,9 @@ const appName = config.appName.toLowerCase().replace(' ', '-')
 
 /*
  * const count = createStore((set, get) => ({
- *  _state: { count: 0 },
+ *  _state: { count: 0, products: [] },
  *  increment: () => set({ count: get().count + 1 })
+ *  fetchProducts: async () => set({ products })
  * }))
  */
 const createStore = (callback, persist) => {

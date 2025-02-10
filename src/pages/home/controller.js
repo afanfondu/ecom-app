@@ -28,7 +28,6 @@ const init = async () => {
 
   productsView.addToCartHandler(async productId => {
     const user = auth.get().user
-
     if (!user) return toast.error('Please login first.')
 
     cart.addItem(products.getProductById(productId))
@@ -39,19 +38,10 @@ const init = async () => {
 const loadProducts = async () => {
   productsView.renderSpinner()
   const { error } = await products.fetchProducts()
-  if (error) {
-    productsView.renderError()
-    return
-  }
+  if (error) return productsView.renderError()
   productsView.render(products.get().products)
 
-  paginations.render(
-    {
-      totalPages: products.get().totalPages,
-      currentPage: products.get().currentPage
-    },
-    true
-  )
+  paginations.render(products.get(), true)
 }
 
 init()

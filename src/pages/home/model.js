@@ -36,6 +36,6 @@ export const products = createStore((set, get) => ({
   },
 
   setCategory(category) {
-    set({ category })
+    set({ category, currentPage: 1 })
   }
 }))
